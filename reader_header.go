@@ -3,25 +3,7 @@ package nrbf
 import (
 	"encoding/binary"
 	"fmt"
-	"io"
 )
-
-type Decoder struct {
-	r   io.Reader
-	buf []byte
-}
-
-type Header struct {
-	RecordTypeEnumeration uint8
-	ObjectId              int32
-	HeaderId              int32
-	MajorVersion          int32
-	MinorVersion          int32
-}
-
-func NewDecoder(r io.Reader) *Decoder {
-	return &Decoder{r: r}
-}
 
 // https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/a7e578d3-400a-4249-9424-7529d10d1b3c
 // [00] [01 00 00 00] [FF FF FF FF] [01 00 00 00] [00 00 00 00]
