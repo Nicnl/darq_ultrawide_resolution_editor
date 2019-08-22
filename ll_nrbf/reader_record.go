@@ -5,13 +5,18 @@ import (
 	"fmt"
 )
 
+// https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/954a0657-b901-4813-9398-4ec732fe8b32
 const (
-	RECORD_BINARY_LIBRARY               = 0x0C
-	RECORD_CLASS_WITH_MEMBERS_AND_TYPES = 0x05
+	RTE_0_SERIALIZED_STREAM_HEADER     = 0x00
+	RTE_5_CLASS_WITH_MEMBERS_AND_TYPES = 0x05
+	RTE_6_BINARY_OBJECT_STRING         = 0x06
+	RTE_12_BINARY_LIBRARY              = 0x0C
 )
 
+type RecordType uint8
+
 type Record struct {
-	RecordType uint8
+	RecordType RecordType
 	Record     interface{}
 }
 
@@ -23,11 +28,17 @@ func (d *Decoder) NextRecord() (rec Record, err error) {
 		return
 	}
 
+	fmt.Println("Read record: ", rec.RecordType)
+
 	switch rec.RecordType {
-	case RECORD_BINARY_LIBRARY:
-		rec.Record, err = d.decodeRecordBinaryLibrary()
-	case RECORD_CLASS_WITH_MEMBERS_AND_TYPES:
+	case RTE_0_SERIALIZED_STREAM_HEADER:
+		rec.Record, err = d.decodeSerizlizedStreamHeader()
+	case RTE_5_CLASS_WITH_MEMBERS_AND_TYPES:
 		rec.Record, err = d.decodeRecordWithMembersAndTypes()
+	case RTE_6_BINARY_OBJECT_STRING:
+		rec.Record, err = d.decodeBinaryObjectString()
+	case RTE_12_BINARY_LIBRARY:
+		rec.Record, err = d.decodeRecordBinaryLibrary()
 	default:
 		err = fmt.Errorf("unknown record type, got %d", rec.RecordType)
 	}
