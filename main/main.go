@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"nrbf"
+	"nrbf/ll_nrbf"
 	"os"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	fmt.Println(" OK")
 
 	fmt.Print("2. Creating nrbf decoder...")
-	r := nrbf.NewDecoder(f)
+	r := ll_nrbf.NewDecoder(f)
 	fmt.Println(" OK")
 
 	fmt.Print("3. Parsing nrbf header...")
