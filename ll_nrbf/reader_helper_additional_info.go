@@ -4,6 +4,7 @@ import "fmt"
 
 type AdditionalInfo struct {
 	Valid bool
+	Data  interface{}
 }
 
 //3 4
@@ -13,12 +14,14 @@ func (d *Decoder) decodeAdditionalInfo(bte BinaryTypeEnumeration, n int32) (ai A
 	// 'The AdditionalInfos sequence MUST NOT contain any item for the BinaryTypeEnum values of String, Object, ObjectArray, or StringArray.'
 	if bte == BTE_1_STRING || bte == BTE_2_OBJECT || bte == BTE_5_OBJECT_ARRAY || bte == BTE_6_STRING_ARRAY {
 		ai.Valid = false
+		ai.Data = nil
 		return
 	}
 
 	if bte == BTE_0_PRIMITIVE || bte == BTE_7_PRIMITIVE_ARRAY {
 		// PrimitiveTypeEnumeration
-		err = fmt.Errorf("AdditionalInfo not implemented for PrimitiveTypeEnumeration")
+		ai.Valid = true
+		ai.Data, err = d.decodePrimitiveTypeEnumeration()
 		return
 	}
 
