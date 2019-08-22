@@ -13,7 +13,7 @@ type BinaryObjectString struct {
 
 func (d *Decoder) decodeBinaryObjectString() (bos BinaryObjectString, err error) {
 	// ObjectId, 'The value MUST be a positive integer'
-	err = binary.Read(d.r, binary.LittleEndian, bos.ObjectId)
+	err = binary.Read(d.r, binary.LittleEndian, &bos.ObjectId)
 	if err != nil {
 		return
 	}
