@@ -20,3 +20,12 @@ type Header struct {
 func NewDecoder(r io.Reader) *Decoder {
 	return &Decoder{r: r}
 }
+
+func (d *Decoder) nextByte() (b byte, err error) {
+	var p [1]byte
+	_, err = d.r.Read(p[:])
+	if err == nil {
+		b = p[0]
+	}
+	return
+}
