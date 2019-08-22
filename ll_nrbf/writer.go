@@ -22,6 +22,8 @@ func (e *Encoder) WriteRecord(rec Record) (err error) {
 	switch rec.RecordType {
 	case RTE_0_SERIALIZED_STREAM_HEADER:
 		err = e.encodeSerializedStreamHeader(rec.Record.(SerializedStreamHeader))
+	case RTE_12_BINARY_LIBRARY:
+		err = e.encodeBinaryLibrary(rec.Record.(BinaryLibrary))
 	default:
 		err = fmt.Errorf("record type %d not implemented", rec.RecordType)
 	}

@@ -41,7 +41,7 @@ func (d *Decoder) NextRecord() (rec Record, err error) {
 	case RTE_11_MESSAGE_END:
 		// KEDAL
 	case RTE_12_BINARY_LIBRARY:
-		rec.Record, err = d.decodeRecordBinaryLibrary()
+		rec.Record, err = d.decodeBinaryLibrary()
 	default:
 		err = fmt.Errorf("unknown record type, got %d", rec.RecordType)
 	}
