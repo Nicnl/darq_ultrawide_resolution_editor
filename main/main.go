@@ -34,4 +34,19 @@ func main() {
 	}
 	fmt.Print("    ")
 	fmt.Println(string(data))
+
+	fmt.Print("4. Read records...")
+	rec, err := r.NextRecord()
+	if err != nil {
+		fmt.Println("FAIL")
+		panic(err)
+	}
+	fmt.Println(" OK")
+
+	data, err = json.MarshalIndent(&rec, "    ", "  ")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Print("    ")
+	fmt.Println(string(data))
 }
