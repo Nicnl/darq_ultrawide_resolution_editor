@@ -22,6 +22,7 @@ func readLength(r io.Reader) (uint32, error) {
 	return uint32(b), nil
 }
 
+// https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/10b218f5-9b2b-4947-b4b7-07725a2c8127
 func Read(r io.Reader) (string, error) {
 	l, err := readLength(r)
 	if err != nil {

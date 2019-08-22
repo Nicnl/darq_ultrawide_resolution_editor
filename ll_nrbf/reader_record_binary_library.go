@@ -26,11 +26,10 @@ func (d *Decoder) decodeRecordBinaryLibrary() (rbl RecordBinaryLibrary, err erro
 	}
 
 	// LibraryName
-	libraryName, err := length_prefixed_string.Read(d.r)
+	rbl.LibraryName, err = length_prefixed_string.Read(d.r)
 	if err != nil {
 		return
 	}
-	rbl.LibraryName = libraryName
 
 	return rbl, nil
 }

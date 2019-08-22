@@ -15,6 +15,7 @@ type Record struct {
 	Record     interface{}
 }
 
+// https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/8b313786-0baf-4f01-bc45-3a4c70af3e01#gt_dca3e776-890f-48c8-be62-094a5f2fcf71
 func (d *Decoder) NextRecord() (rec Record, err error) {
 	// Read the record type
 	err = binary.Read(d.r, binary.BigEndian, &rec.RecordType)
