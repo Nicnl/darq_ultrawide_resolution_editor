@@ -6,12 +6,13 @@ import (
 )
 
 const (
-	RECORD_BINARY_LIBRARY = 0x0C
+	RECORD_BINARY_LIBRARY               = 0x0C
+	RECORD_CLASS_WITH_MEMBERS_AND_TYPES = 0x05
 )
 
 type Record struct {
 	RecordType uint8
-	Data       interface{}
+	Record     interface{}
 }
 
 func (d *Decoder) NextRecord() (rec Record, err error) {
@@ -23,7 +24,9 @@ func (d *Decoder) NextRecord() (rec Record, err error) {
 
 	switch rec.RecordType {
 	case RECORD_BINARY_LIBRARY:
-		rec.Data, err = d.decodeRecordBinaryLibrary()
+		rec.Record, err = d.decodeRecordBinaryLibrary()
+	case RECORD_CLASS_WITH_MEMBERS_AND_TYPES:
+		rec.Record, err = d.decodeRecordWithMembersAndTypes()
 	default:
 		err = fmt.Errorf("unknown record type, got %d", rec.RecordType)
 	}
