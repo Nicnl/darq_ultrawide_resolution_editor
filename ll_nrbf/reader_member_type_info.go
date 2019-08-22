@@ -1,16 +1,16 @@
 package ll_nrbf
 
 type MemberTypeInfo struct {
-	BinaryTypeEnums []BinaryTypeEnumeration
+	BinaryTypeEnums []BinaryType
 	AdditionalInfos []AdditionalInfo
 }
 
 // https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/aa509b5a-620a-4592-a5d8-7e9613e0a03e
 func (d *Decoder) decodeMemberTypeInfo(n int32) (mti MemberTypeInfo, err error) {
 	// BinaryTypeEnums
-	mti.BinaryTypeEnums = make([]BinaryTypeEnumeration, n)
+	mti.BinaryTypeEnums = make([]BinaryType, n)
 	for i := range mti.BinaryTypeEnums {
-		mti.BinaryTypeEnums[i], err = d.decodeBinaryTypeEnumeration()
+		mti.BinaryTypeEnums[i], err = d.decodeBinaryType()
 		if err != nil {
 			return
 		}

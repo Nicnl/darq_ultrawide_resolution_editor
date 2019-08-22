@@ -10,6 +10,7 @@ const (
 	RTE_0_SERIALIZED_STREAM_HEADER     = 0x00
 	RTE_5_CLASS_WITH_MEMBERS_AND_TYPES = 0x05
 	RTE_6_BINARY_OBJECT_STRING         = 0x06
+	RTE_11_MESSAGE_END                 = 11
 	RTE_12_BINARY_LIBRARY              = 0x0C
 )
 
@@ -37,6 +38,8 @@ func (d *Decoder) NextRecord() (rec Record, err error) {
 		rec.Record, err = d.decodeRecordWithMembersAndTypes()
 	case RTE_6_BINARY_OBJECT_STRING:
 		rec.Record, err = d.decodeBinaryObjectString()
+	case RTE_11_MESSAGE_END:
+		// KEDAL
 	case RTE_12_BINARY_LIBRARY:
 		rec.Record, err = d.decodeRecordBinaryLibrary()
 	default:

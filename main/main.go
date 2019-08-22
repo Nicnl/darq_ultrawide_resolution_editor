@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"nrbf/ll_nrbf"
 	"os"
 )
@@ -21,8 +22,12 @@ func main() {
 	fmt.Println(" OK")
 
 	fmt.Print("3. Read records...")
+	err = nil
 	for {
 		rec, err := r.NextRecord()
+		if err == io.EOF {
+			return
+		}
 		if err != nil {
 			fmt.Println("FAIL")
 			panic(err)

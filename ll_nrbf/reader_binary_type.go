@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-type BinaryTypeEnumeration uint8
+type BinaryType uint8
 
 const (
 	BTE_0_PRIMITIVE       = 0
@@ -19,7 +19,7 @@ const (
 )
 
 // https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/054e5c58-be21-4c86-b1c3-f6d3ce17ec72
-func (d *Decoder) decodeBinaryTypeEnumeration() (bte BinaryTypeEnumeration, err error) {
+func (d *Decoder) decodeBinaryType() (bte BinaryType, err error) {
 	err = binary.Read(d.r, binary.LittleEndian, &bte)
 	if err != nil {
 		return

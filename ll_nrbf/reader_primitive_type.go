@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-type PrimitiveTypeEnumeration uint8
+type PrimitiveType uint8
 
 const (
 	PTE_1_BOOLEAN    = 1
@@ -27,7 +27,7 @@ const (
 	PTE_18           = 18
 )
 
-func (d *Decoder) decodePrimitiveTypeEnumeration() (pte PrimitiveTypeEnumeration, err error) {
+func (d *Decoder) decodePrimitiveType() (pte PrimitiveType, err error) {
 	err = binary.Read(d.r, binary.LittleEndian, &pte)
 	if err != nil {
 		return
