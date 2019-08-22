@@ -32,7 +32,6 @@ func (e *Encoder) encodeClassInfo(ci ClassInfo) (err error) {
 	}
 
 	// MemberNames
-	ci.MemberNames = make([]string, ci.MemberCount, ci.MemberCount)
 	for i := range ci.MemberNames {
 		err = length_prefixed_string.Write(e.w, ci.MemberNames[i])
 		if err != nil {

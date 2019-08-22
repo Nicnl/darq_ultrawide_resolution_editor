@@ -26,6 +26,8 @@ func (e *Encoder) WriteRecord(rec Record) (err error) {
 		err = e.encodeClassWithMembersAndTypes(rec.Record.(ClassWithMembersAndTypes))
 	case RTE_6_BINARY_OBJECT_STRING:
 		err = e.encodeBinaryObjectString(rec.Record.(BinaryObjectString))
+	case RTE_11_MESSAGE_END:
+		// KEDAL
 	case RTE_12_BINARY_LIBRARY:
 		err = e.encodeBinaryLibrary(rec.Record.(BinaryLibrary))
 	default:
