@@ -21,15 +21,15 @@ func (e *Encoder) WriteRecord(rec Record) (err error) {
 
 	switch rec.RecordType {
 	case RTE_0_SERIALIZED_STREAM_HEADER:
-		err = e.encodeSerializedStreamHeader(rec.Record.(SerializedStreamHeader))
+		err = e.encodeSerializedStreamHeader(rec.Record.(SerializedStreamHeader)) // TODO: fix risky cast
 	case RTE_5_CLASS_WITH_MEMBERS_AND_TYPES:
-		err = e.encodeClassWithMembersAndTypes(rec.Record.(ClassWithMembersAndTypes))
+		err = e.encodeClassWithMembersAndTypes(rec.Record.(ClassWithMembersAndTypes)) // TODO: fix risky cast
 	case RTE_6_BINARY_OBJECT_STRING:
-		err = e.encodeBinaryObjectString(rec.Record.(BinaryObjectString))
+		err = e.encodeBinaryObjectString(rec.Record.(BinaryObjectString)) // TODO: fix risky cast
 	case RTE_11_MESSAGE_END:
 		// KEDAL
 	case RTE_12_BINARY_LIBRARY:
-		err = e.encodeBinaryLibrary(rec.Record.(BinaryLibrary))
+		err = e.encodeBinaryLibrary(rec.Record.(BinaryLibrary)) // TODO: fix risky cast
 	default:
 		err = fmt.Errorf("record type %d not implemented", rec.RecordType)
 	}

@@ -10,7 +10,7 @@ func (e *Encoder) encodeAdditionalInfo(bte BinaryType, ai AdditionalInfo) (err e
 	}
 
 	if bte == BTE_0_PRIMITIVE || bte == BTE_7_PRIMITIVE_ARRAY {
-		err = e.encodePrimitiveType(ai.Data.(PrimitiveType))
+		err = e.encodePrimitiveType(ai.Data.(PrimitiveType)) // TODO: fix risky cast
 		return
 	}
 

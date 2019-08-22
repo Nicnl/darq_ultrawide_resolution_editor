@@ -29,9 +29,9 @@ func (e *Encoder) encodeClassWithMembersAndTypes(cmt ClassWithMembersAndTypes) (
 	for i := range cmt.Values {
 		switch cmt.MemberTypeInfo.BinaryTypeEnums[i] {
 		case BTE_0_PRIMITIVE:
-			err = e.encodePrimitive(cmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType), cmt.Values[i])
+			err = e.encodePrimitive(cmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType), cmt.Values[i]) // TODO: fix risky cast
 		case BTE_1_STRING:
-			err = e.WriteRecord(cmt.Values[i].(Record))
+			err = e.WriteRecord(cmt.Values[i].(Record)) // TODO: fix risky cast
 		default:
 			err = fmt.Errorf("decoding not implemented for type %d", cmt.MemberTypeInfo.BinaryTypeEnums[i])
 		}

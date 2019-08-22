@@ -37,7 +37,7 @@ func (d *Decoder) decodeClassWithMembersAndTypes() (cmt ClassWithMembersAndTypes
 	for i := range cmt.Values {
 		switch cmt.MemberTypeInfo.BinaryTypeEnums[i] {
 		case BTE_0_PRIMITIVE:
-			cmt.Values[i], err = d.decodePrimitive(cmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType))
+			cmt.Values[i], err = d.decodePrimitive(cmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType)) // TODO: fix risky cast
 		case BTE_1_STRING:
 			cmt.Values[i], err = d.NextRecord()
 		default:
