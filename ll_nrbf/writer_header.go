@@ -10,13 +10,13 @@ import (
 // Respectively: RecordTypeEnumeration, ObjectId, HeaderId, MajorVersion and MinorVersion
 func (e *Encoder) encodeSerializedStreamHeader(ssh SerializedStreamHeader) (err error) {
 	// ObjectId
-	err = binary.Write(e.w, binary.LittleEndian, &ssh.ObjectId)
+	err = binary.Write(e.w, binary.LittleEndian, ssh.ObjectId)
 	if err != nil {
 		return
 	}
 
 	// HeaderId
-	err = binary.Write(e.w, binary.LittleEndian, &ssh.HeaderId)
+	err = binary.Write(e.w, binary.LittleEndian, ssh.HeaderId)
 	if err != nil {
 		return
 	}
@@ -33,7 +33,7 @@ func (e *Encoder) encodeSerializedStreamHeader(ssh SerializedStreamHeader) (err 
 		return
 	}
 
-	err = binary.Write(e.w, binary.LittleEndian, &ssh.MajorVersion)
+	err = binary.Write(e.w, binary.LittleEndian, ssh.MajorVersion)
 	if err != nil {
 		return
 	}
@@ -44,7 +44,7 @@ func (e *Encoder) encodeSerializedStreamHeader(ssh SerializedStreamHeader) (err 
 		return
 	}
 
-	err = binary.Write(e.w, binary.LittleEndian, &ssh.MinorVersion)
+	err = binary.Write(e.w, binary.LittleEndian, ssh.MinorVersion)
 	if err != nil {
 		return
 	}

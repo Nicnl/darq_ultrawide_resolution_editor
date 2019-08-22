@@ -15,7 +15,7 @@ func (e *Encoder) encodeBinaryLibrary(rbl BinaryLibrary) (err error) {
 		return
 	}
 
-	err = binary.Write(e.w, binary.LittleEndian, &rbl.LibraryId)
+	err = binary.Write(e.w, binary.LittleEndian, rbl.LibraryId)
 	if err != nil {
 		return
 	}

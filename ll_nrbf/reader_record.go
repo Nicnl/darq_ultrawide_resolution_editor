@@ -35,7 +35,7 @@ func (d *Decoder) NextRecord() (rec Record, err error) {
 	case RTE_0_SERIALIZED_STREAM_HEADER:
 		rec.Record, err = d.decodeSerizlizedStreamHeader()
 	case RTE_5_CLASS_WITH_MEMBERS_AND_TYPES:
-		rec.Record, err = d.decodeRecordWithMembersAndTypes()
+		rec.Record, err = d.decodeClassWithMembersAndTypes()
 	case RTE_6_BINARY_OBJECT_STRING:
 		rec.Record, err = d.decodeBinaryObjectString()
 	case RTE_11_MESSAGE_END:

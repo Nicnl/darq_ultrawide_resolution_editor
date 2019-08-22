@@ -13,55 +13,44 @@ type ClassWithMembersAndTypes struct {
 }
 
 // https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/847b0b6a-86af-4203-8ed0-f84345f845b9
-func (d *Decoder) decodeRecordWithMembersAndTypes() (rcmt ClassWithMembersAndTypes, err error) {
+func (d *Decoder) decodeClassWithMembersAndTypes() (cmt ClassWithMembersAndTypes, err error) {
 	// ClassInfo
-	rcmt.ClassInfo, err = d.decodeClassInfo()
+	cmt.ClassInfo, err = d.decodeClassInfo()
 	if err != nil {
 		return
 	}
 
 	// MemberTypeInfo
-	rcmt.MemberTypeInfo, err = d.decodeMemberTypeInfo(rcmt.ClassInfo.MemberCount)
+	cmt.MemberTypeInfo, err = d.decodeMemberTypeInfo(cmt.ClassInfo.MemberCount)
 	if err != nil {
 		return
 	}
 
 	// LibraryId
-	err = binary.Read(d.r, binary.LittleEndian, &rcmt.LibraryId)
+	err = binary.Read(d.r, binary.LittleEndian, &cmt.LibraryId)
 	if err != nil {
 		return
 	}
 
 	// Values
-	rcmt.Values = make([]interface{}, rcmt.ClassInfo.MemberCount)
-	for i := range rcmt.Values {
+	cmt.Values = make([]interface{}, cmt.ClassInfo.MemberCount)
+	for i := range cmt.Values {
 		fmt.Println("## DOING i =", i)
-		fmt.Println("## TYPE IS:", rcmt.MemberTypeInfo.BinaryTypeEnums[i])
-		switch rcmt.MemberTypeInfo.BinaryTypeEnums[i] {
+		fmt.Println("## TYPE IS:", cmt.MemberTypeInfo.BinaryTypeEnums[i])
+		switch cmt.MemberTypeInfo.BinaryTypeEnums[i] {
 		case BTE_0_PRIMITIVE:
-			rcmt.Values[i], err = d.decodePrimitive(rcmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType))
+			cmt.Values[i], err = d.decodePrimitive(cmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType))
 		case BTE_1_STRING:
-			var nextByte uint8
-			nextByte, err = d.nextByte()
-			if err != nil {
-				return
-			}
-
-			if nextByte != 0x06 {
-				err = fmt.Errorf("invalid nextByte for type BTE_1_STRING, expected 6, got %d", nextByte)
-				return
-			}
-
-			rcmt.Values[i], err = d.decodeBinaryObjectString()
+			cmt.Values[i], err = d.NextRecord()
 		default:
-			err = fmt.Errorf("decoding not implemented for type %d", rcmt.MemberTypeInfo.BinaryTypeEnums[i])
+			err = fmt.Errorf("decoding not implemented for type %d", cmt.MemberTypeInfo.BinaryTypeEnums[i])
 		}
 
 		if err != nil {
 			return
 		}
 
-		fmt.Printf("rcmt.Values[%d] = %s\n", i, fmt.Sprint(rcmt.Values[i]))
+		fmt.Printf("cmt.Values[%d] = %s\n", i, fmt.Sprint(cmt.Values[i]))
 	}
 
 	return
