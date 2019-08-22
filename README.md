@@ -1,8 +1,8 @@
-# DARK Ultrawide Resolution Editor
+# DARQ Ultrawide Resolution Editor
 
 ## What is DARQ?
 
-DARK is a indie game made by Unfold Games.  
+DARQ is a indie game made by Unfold Games.  
 https://store.steampowered.com/app/433550/DARQ/
 
 ## Why this GitHub project?
@@ -25,6 +25,10 @@ Two ways:
 
 ## Results
 
-### Dark at default 1920x1080
+### DARQ at default 1920x1080
 
-### Dark at 3840x1600 master race resolution
+![DARQ at 1920x1080](DARQ_2019_08_23_01_04_44_828.jpg)
+
+### DARQ at glorious 3840x1600 master race resolution
+
+![DARQ at glorious 3840x1600 master race resolution](DARQ_2019_08_23_01_05_17_788.jpg)
