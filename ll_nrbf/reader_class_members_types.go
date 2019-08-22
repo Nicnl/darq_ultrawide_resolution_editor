@@ -35,8 +35,6 @@ func (d *Decoder) decodeClassWithMembersAndTypes() (cmt ClassWithMembersAndTypes
 	// Values
 	cmt.Values = make([]interface{}, cmt.ClassInfo.MemberCount)
 	for i := range cmt.Values {
-		fmt.Println("## DOING i =", i)
-		fmt.Println("## TYPE IS:", cmt.MemberTypeInfo.BinaryTypeEnums[i])
 		switch cmt.MemberTypeInfo.BinaryTypeEnums[i] {
 		case BTE_0_PRIMITIVE:
 			cmt.Values[i], err = d.decodePrimitive(cmt.MemberTypeInfo.AdditionalInfos[i].Data.(PrimitiveType))
@@ -49,8 +47,6 @@ func (d *Decoder) decodeClassWithMembersAndTypes() (cmt ClassWithMembersAndTypes
 		if err != nil {
 			return
 		}
-
-		fmt.Printf("cmt.Values[%d] = %s\n", i, fmt.Sprint(cmt.Values[i]))
 	}
 
 	return

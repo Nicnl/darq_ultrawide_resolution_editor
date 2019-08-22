@@ -22,7 +22,7 @@ func readRecords() []ll_nrbf.Record {
 	r := ll_nrbf.NewDecoder(f)
 	fmt.Println(" OK")
 
-	fmt.Print("3. Read records...")
+	fmt.Println("3. Reading nrbf records...")
 	records := make([]ll_nrbf.Record, 0)
 	err = nil
 	for {
@@ -34,7 +34,6 @@ func readRecords() []ll_nrbf.Record {
 			fmt.Println("FAIL")
 			panic(err)
 		}
-		fmt.Println(" OK")
 
 		data, err := json.MarshalIndent(&rec, "    ", "  ")
 		if err != nil {
@@ -42,6 +41,7 @@ func readRecords() []ll_nrbf.Record {
 		}
 		fmt.Print("    ")
 		fmt.Println(string(data))
+		fmt.Println()
 
 		records = append(records, rec)
 	}
@@ -57,13 +57,18 @@ func writeFile(records []ll_nrbf.Record) {
 	defer f.Close()
 	fmt.Println(" OK")
 
+	fmt.Print("5. Creating nrbf encoder...")
 	e := ll_nrbf.NewEncoder(f)
+	fmt.Println(" OK")
+
+	fmt.Print("6. Writing nrbf records...")
 	for _, record := range records {
 		err = e.WriteRecord(record)
 		if err != nil {
 			panic(err)
 		}
 	}
+	fmt.Println(" OK")
 }
 
 func main() {

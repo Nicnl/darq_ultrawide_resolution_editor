@@ -29,8 +29,6 @@ func (d *Decoder) NextRecord() (rec Record, err error) {
 		return
 	}
 
-	fmt.Println("Read record: ", rec.RecordType)
-
 	switch rec.RecordType {
 	case RTE_0_SERIALIZED_STREAM_HEADER:
 		rec.Record, err = d.decodeSerizlizedStreamHeader()

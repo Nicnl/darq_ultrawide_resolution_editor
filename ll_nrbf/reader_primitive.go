@@ -10,7 +10,6 @@ func (d *Decoder) decodePrimitive(pte PrimitiveType) (out interface{}, err error
 	case PTE_1_BOOLEAN:
 		var v uint8
 		err = binary.Read(d.r, binary.LittleEndian, &v)
-		fmt.Println("v =", v)
 		if err == nil {
 			out = v != 0
 		}
