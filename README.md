@@ -31,4 +31,4 @@ Two ways:
 
 ### DARQ at glorious 3840x1600 master race resolution
 
-![DARQ at glorious 3840x1600 master race resolution](DARQ_2019_08_23_01_04_44_828.jpg)
+![DARQ at glorious 3840x1600 master race resolution](DARQ_2019_08_23_01_05_17_788.jpg)
