@@ -19,11 +19,10 @@ _`After some more testing we've discovered that widescreen aspect ratio introduc
 Please keep in mind that this tool only modifies the resolution of the save file.  
 It doesn't attempt to fix any gameplay-related issues, so you might encounter some.
 
-But; As I'm playing through the game, I'll report if I encounter any issues during the different chapters.
-
 You may have to revert to one of the default 16/9 resolutions to get past problematic chapters.  
 But remember that you can revert back to the resolution you like once you get past those chapters.
 
+As I'm playing through the game, I'll report if I encounter any issues during the different chapters.
 Chapters at 3840x1600:  
 
 - Chapter 1: No issues, works perfectly
