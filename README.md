@@ -11,6 +11,18 @@ Sadly, DARQ doesn't support ultrawide resolutions, those are not selectable from
 
 This tool is able to edit the save file and apply whatever resolution you want.
 
+## Does it works well?
+
+Here's the official stance from the developper:  
+_'After some more testing we've discovered that widescreen aspect ratio introduces a few gameplay-related issues. We might revisit this after launch and release a patch that allows for 32:9.'_
+
+Please keep in mind that this tool only modifies the resolution of the save file.  
+It doesn't attempt to fix any gameplay-related issues, so you might encounter some.
+
+But; As I'm playing through the game, I'll report if I encounter any issues during the different chapters.
+
+- Chapter 1: No issues, works perfectly
+
 ## Where can I download it?
 
 Download link:  
