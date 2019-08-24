@@ -26,6 +26,7 @@ As I'm playing through the game, I'll report if I encounter any issues during th
 Chapters at 3840x1600:  
 
 - Chapter 1: No issues, works perfectly
+- Chapter 2: No issues, works perfectly
 
 ## Where can I download it?
 
