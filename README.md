@@ -22,7 +22,7 @@ It doesn't attempt to fix any gameplay-related issues, so you might encounter so
 You may have to revert to one of the default 16/9 resolutions to get past problematic chapters.  
 But remember that you can revert back to the resolution you like once you get past those chapters.
 
-As I'm playing through the game, I'll report if I encounter any issues during the different chapters.
+As I'm playing through the game, I'll report if I encounter any issues during the different chapters.  
 Chapters at 3840x1600:  
 
 - Chapter 1: No issues, works perfectly
