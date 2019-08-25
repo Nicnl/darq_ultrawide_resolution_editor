@@ -28,6 +28,7 @@ Chapters at 3840x1600:
 - Chapter 1: No issues, works perfectly
 - Chapter 2: No issues, works perfectly
 - Chapter 3: No issues, works perfectly
+- Chapter 4: No issues, works perfectly
 
 ## Where can I download it?
 
