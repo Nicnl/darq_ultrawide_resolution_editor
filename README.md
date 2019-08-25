@@ -30,6 +30,10 @@ Chapters at 3840x1600:
 - Chapter 3: No issues, works perfectly
 - Chapter 4: No issues, works perfectly
 - Chapter 5: No issues, works perfectly (though the part when the camera rotates around made me a bit nauseous)
+- Chapter 6: No issues, works perfectly
+
+So yeah, during my playthrough, all chapters works perfectly;  
+No problems with the camera, no problems with anything really
 
 ## Where can I download it?
 
